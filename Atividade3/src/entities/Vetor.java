@@ -2,13 +2,15 @@ package entities;
 
 public class Vetor implements IVetor{
     
-    private double[] notas = new double[4];
+    private String[] nomes = new String[5];
+    private int[] idades = new int[5];
+    private double[] notas = new double[5];
     private int totalNotas = 0;
 
     @Override
-    public void adiciona(double elem){
+    public void adiciona(String nome, int idade, double nota){
         this.garanteEspaco();
-        this.notas[this.totalNotas] = elem;
+        this.notas[this.totalNotas] = nota;
         this.totalNotas++;
     }
 
@@ -18,9 +20,9 @@ public class Vetor implements IVetor{
     }
 
     @Override
-    public boolean contem(double elem) {
+    public boolean contem(String nome, int idade, double nota) {
         for(int i = 0; i < this.notas.length; i++){
-            if(elem == this.notas[i]){
+            if(nome == this.nomes[i] && idade == this.idades[i] && nota == this.notas[i]){
                 return true;
             }
         }
@@ -38,10 +40,10 @@ public class Vetor implements IVetor{
     }
 
     @Override
-    public boolean remove(double elem){
+    public boolean remove(String nome){
         int indice = -1;
         for(int i = 0; i < totalNotas; i++){
-            if(elem == this.notas[i]){
+            if(nome == this.nomes[i]){
                 indice = i;
                 break;
             }
@@ -60,10 +62,14 @@ public class Vetor implements IVetor{
 
     private void garanteEspaco(){
         if(this.cheio()){
+            String[] novoNomes = new String[this.nomes.length * 2];
+            int[] novoIdades = new int[this.idades.length * 2];
             double[] novoNotas = new double[this.notas.length * 2];
             for(int i = 0; i < this.notas.length; i++){
                 novoNotas[i] = this.notas[i];
             }
+            this.nomes = novoNomes;
+            this.idades = novoIdades;
             this.notas = novoNotas;
         }
     }

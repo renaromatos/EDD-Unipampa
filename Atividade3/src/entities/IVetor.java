@@ -2,9 +2,9 @@ package entities;
 
 public interface IVetor {
 
-    public void adiciona(double elem);
+    public void adiciona(String nome, int idade, double nota);
     public int tamanho();
-    public boolean contem(double elem);
+    public boolean contem(String nome, int idade, double nota);
     public boolean cheio();
-    public boolean remove(double elem);
+    public boolean remove(String nome);
 }
