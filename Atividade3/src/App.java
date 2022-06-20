@@ -1,9 +1,10 @@
+import entities.IVetor;
 import entities.Vetor;
 
 public class App {
     public static void main(String[] args) throws Exception {
         
-        Vetor vetor = new Vetor();
+        IVetor vetor = new Vetor();
 
         vetor.adiciona("Aluno1", 20, 6.7);
         vetor.adiciona("Aluno2", 21, 9);
